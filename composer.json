@@ -1,0 +1,15 @@
+{
+    "name": "felipe/biblioteca",
+    "description": "projeto biblioteca poo",
+    "autoload": {
+        "psr-4": {
+            "Felipe\\Biblioteca\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Felipe Kauãn"
+        }
+    ],
+    "require": {}
+}
