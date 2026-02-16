@@ -1,6 +1,8 @@
 <?php
 namespace Felipe\Biblioteca;
 
+use Exception;
+
 abstract class Usuario {
     protected string $nome;
     protected array $livrosEmprestados = [];
@@ -15,7 +17,12 @@ abstract class Usuario {
     
     // métodos
     public function adicionarLivroEmprestado(Livro $livro): void {
-        $this->livrosEmprestados[] = $livro;
+        if ($this->podePegarEmprestado()) {
+            $this->livrosEmprestados[] = $livro;
+        } else {
+            throw new \Exception("O usuário não pode pegar livros emprestados!");
+        }
+        
     }
 
     public function removerLivroEmprestado(Livro $livro): void {
