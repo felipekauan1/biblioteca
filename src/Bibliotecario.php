@@ -8,24 +8,20 @@ class Bibliotecario {
         // o usuario tem que poder pegar emprestado
 
         if (!$livro->estaDisponivel()) {
-            echo '<br>O livro não está disponivel<br>';
-            return false;
+            throw new \Exception('O livro não está disponivel');
         }
 
         if (!$estante->verificarLivro($livro)) {
-            echo '<br>O livro não está na estante<br>';
-            return false;
+            throw new \Exception('O livro não está na estante');
         }
 
         if (!$usuario->podePegarEmprestado()) {
-            echo '<br>O usuário não pode pegar emprestado<br>';
-            return false;
+            throw new \Exception('O usuário não pode pegar emprestado');
         }
 
         $usuario->adicionarLivroEmprestado($livro);
         $estante->removerLivro($livro);
         $livro->marcarComoEmprestado();
-        echo '<br>Livro emprestado com sucesso<br>';
 
         return true;
     }
@@ -36,24 +32,20 @@ class Bibliotecario {
         // o livro tem que ser colocado na estante
 
         if ($livro->estaDisponivel()) {
-            echo '<br>O livro não está emprestado<br>';
-            return false;
+            throw new \Exception('O livro não está emprestado');
         }
 
         if ($estante->buscarLivroPorTitulo($livro->getTitulo())) {
-            echo '<br>O livro já está na estante<br>';
-            return false;
+            throw new \Exception('O livro já está na estante');
         }
 
         if (!in_array($livro, $usuario->listarLivrosEmprestados())) {
-            echo '<br>O livro não está com o usuário<br>';
-            return false;
+            throw new \Exception('O livro não está com o usuário');
         }
 
         $usuario->removerLivroEmprestado($livro);
         $estante->adicionarLivro($livro);
         $livro->marcarComoDisponivel();
-        echo '<br>Livro devolvido com sucesso<br>';
 
         return true;
     }
