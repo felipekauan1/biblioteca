@@ -10,9 +10,31 @@ abstract class Usuario {
         $this->nome = $nome;
     }
 
+    // método abstrato
     abstract function podePegarEmprestado();
-    abstract function adicionarLivroEmprestado();
-    abstract function removerLivroEmprestado();
-    abstract function listarLivrosEmprestados();
+    
+    // métodos
+    public function adicionarLivroEmprestado(Livro $livro): void {
+        $this->livrosEmprestados[] = $livro;
+    }
+
+    public function removerLivroEmprestado(Livro $livro): void {
+        $this->livrosEmprestados = array_filter(
+            $this->livrosEmprestados,
+
+            function ($livroAtual) use ($livro) {
+                if ($livroAtual === $livro) {
+                    echo ' - Livro removido!';
+                }
+                echo '<br>';
+                return $livroAtual !== $livro;
+            }
+        );
+    }
+
+    public function listarLivrosEmprestados(): array {
+        return $this->livrosEmprestados;
+    }
+
 }
 ?>
