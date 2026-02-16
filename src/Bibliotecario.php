@@ -45,6 +45,11 @@ class Bibliotecario {
             return false;
         }
 
+        if (!in_array($livro, $usuario->listarLivrosEmprestados())) {
+            echo '<br>O livro não está com o usuário<br>';
+            return false;
+        }
+
         $usuario->removerLivroEmprestado($livro);
         $estante->adicionarLivro($livro);
         $livro->marcarComoDisponivel();
