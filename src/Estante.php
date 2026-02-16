@@ -14,7 +14,7 @@ class Estante {
 
             function ($livroAtual) use ($livro) {
                 if ($livroAtual === $livro) {
-                    echo '- Livro removido da estante!';
+                    throw new \Exception('Livro removido da estante!');
                 }
                 echo '<br>';
                 return $livroAtual !== $livro;

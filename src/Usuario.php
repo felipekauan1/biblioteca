@@ -31,9 +31,8 @@ abstract class Usuario {
 
             function ($livroAtual) use ($livro) {
                 if ($livroAtual === $livro) {
-                    echo ' - Livro removido!';
+                    throw new \Exception('Livro removido!');
                 }
-                echo '<br>';
                 return $livroAtual !== $livro;
             }
         );
