@@ -2,15 +2,10 @@
 namespace Felipe\Biblioteca;
 
 class Aluno extends Usuario {
-    private int $maximolivrosEmprestados = 1;
+    private const MAX_LIVROS_IMPRESTADOS = 1;
 
     public function podePegarEmprestado() {
-        if (count($this->livrosEmprestados) < $this->maximolivrosEmprestados) {
-            return true;
-        }
-
-        return false;
+        return count($this->livrosEmprestados) < self::MAX_LIVROS_IMPRESTADOS;
     }
-
 }
 ?>
