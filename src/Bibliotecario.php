@@ -12,7 +12,7 @@ class Bibliotecario {
             return false;
         }
 
-        if (!$estante->buscarLivroPorTitulo($livro->getTitulo())) {
+        if (!$estante->verificarLivro($livro)) {
             echo '<br>O livro não está na estante<br>';
             return false;
         }

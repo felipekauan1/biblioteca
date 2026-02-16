@@ -14,12 +14,16 @@ class Estante {
 
             function ($livroAtual) use ($livro) {
                 if ($livroAtual === $livro) {
-                    echo ' - Livro removido!';
+                    echo '- Livro removido da estante!';
                 }
                 echo '<br>';
                 return $livroAtual !== $livro;
             }
         );
+    }
+
+    public function verificarLivro(Livro $livro): bool {
+        return in_array($livro, $this->livros);
     }
 
     public function buscarLivroPorTitulo(string $titulo): ?Livro {
