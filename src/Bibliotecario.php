@@ -2,7 +2,7 @@
 namespace Felipe\Biblioteca;
 
 class Bibliotecario {
-    public function emprestarLivro(Usuario $usuario, Livro $livro, Estante $estante) {
+    public static function emprestarLivro(Usuario $usuario, Livro $livro, Estante $estante) {
         // o livro tem que estar na estante
         // o livro tem que estar disponivel
         // o usuario tem que poder pegar emprestado
@@ -26,7 +26,7 @@ class Bibliotecario {
         return true;
     }
 
-    public function devolverLivro(Usuario $usuario, Livro $livro, Estante $estante) {
+    public static function devolverLivro(Usuario $usuario, Livro $livro, Estante $estante) {
         // o livro tem que estar com o usuário
         // o livro tem que passar a estar disponivel
         // o livro tem que ser colocado na estante
