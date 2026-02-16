@@ -23,6 +23,12 @@ class Estante {
     }
 
     public function buscarLivroPorTitulo(string $titulo): ?Livro {
+        foreach ($this->livros as $livro) {
+            if (str_contains(strtolower($livro->getTitulo()), strtolower($titulo))) {
+                return $livro;
+                break;
+            }
+        }
         return null;
     }
 
